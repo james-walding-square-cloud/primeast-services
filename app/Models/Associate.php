@@ -9,6 +9,8 @@ class associate extends Model
 {
     protected $table = 'associate';
 
+    protected $guarded = ['id'];
+
     public function associateData() {
         return $this->hasOne(AssociateData::class, 'user_id', 'user_id');
     }

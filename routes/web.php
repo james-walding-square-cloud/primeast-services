@@ -28,6 +28,8 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/associate/index', [AssociateController::class, 'index']);
     Route::get('/associate/edit/{user_id}', [AssociateController::class, 'edit']);
     Route::put('/associate/update/{user_id}', [AssociateController::class, 'update']);
+    Route::get('/associate/create', [AssociateController::class, 'create']);
+    Route::post('/associate/store', [AssociateController::class, 'store']);
 });
 //Internal Only
 

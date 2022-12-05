@@ -27,14 +27,18 @@ class AssociateController extends Controller
             ]);
     }
     public function create() {
+        $user_id = Associate::orderBy('user_id', 'desc')->pluck('user_id')->first();
+        $user_id = $user_id+1;
+
+        return view('associate/create', [
+            'user_id' => $user_id,
+        ]);
 
     }
     public function edit($user_id) {
         $associate = Associate::with('associateData')
             ->where('user_id', $user_id)
             ->first();
-
-        dump($associate);
 
         return view('associate/edit', [
             'associate' => $associate,
@@ -55,6 +59,7 @@ class AssociateController extends Controller
                 'address3' => $request->address3 ?? $associate->address3,
                 'city' => $request->city ?? $associate->city,
                 'county' => $request->county ?? $associate->county,
+                'country' => $request->country ?? $associate->country,
                 'postcode' => $request->postcode ?? $associate->postcode,
                 'phone_office' => $request->phoneOffice ?? $associate->phone_office,
                 'phone_home' => $request->phoneHome ?? $associate->phone_home,
@@ -68,11 +73,25 @@ class AssociateController extends Controller
         return redirect('/admin/associate/index');
     }
 
-    public function store(Request $request, $user_id) {
-        $associate = Associate::where('user_id', $user_id)->first();
+    public function store(Request $request) {
 
-        Associate::where('user_id', $user_id)
-            ->insert([
+        $request->validate([
+            'title' => 'required',
+            'firstName' => 'required',
+            'lastName' => 'required',
+            'address1' => 'required',
+            'city' => 'required',
+            'postcode' => 'required',
+            'county' => 'required',
+            'country' => 'required',
+            'email' => 'required',
+            'emergencyContactName' => 'required',
+            'emergencyContactPhone' => 'required',
+            'emergencyContactEmail' => 'required',
+        ]);
+
+        Associate::create([
+                'user_id' => $request->user_id,
                 'title' => $request->title ?? null,
                 'first_name' => $request->firstName ?? null,
                 'last_name' => $request->lastName ?? null,
@@ -83,13 +102,16 @@ class AssociateController extends Controller
                 'address3' => $request->address3 ?? null,
                 'city' => $request->city ?? null,
                 'county' => $request->county ?? null,
-                'postcode' => $request->postcode ?? null, 
+                'country' => $request->county ?? null,
+                'postcode' => $request->postcode ?? null,
+                'email' => $request->email ?? null,
                 'phone_office' => $request->phoneOffice ?? null,
                 'phone_home' => $request->phoneHome ?? null,
                 'phone_mobile' => $request->phoneMobile ?? null,
                 'emergency_contact_name' => $request->emergencyContactName ?? null,
                 'emergency_contact_phone' => $request->emergencyContactPhone ?? null,
                 'emergency_contact_email' => $request->emergencyContactEmail ?? null,
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ]);
 

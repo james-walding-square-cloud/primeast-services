@@ -115,6 +115,14 @@
                                 <input type="text" name='postcode' class="form-control" id="postcode" value="{{$associate->postcode}}" placeholder="{{$associate->postcode}}">
                             </div>
                         </div>
+                        <div class="col p-1 row">
+                            <div class="col-3">
+                                <label for="country" class="form-label py-1">Country</label>
+                            </div>
+                            <div class="col-9">
+                                <input required type="text" name='country' class="form-control" id="country" value="{{$associate->country}}" placeholder="Country">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -6,8 +6,8 @@
         <h1>Create Associate</h1>
         <hr>
     </div>
-    <form action="/admin/associate/store/{{$associate->user_id}}" method="post">
-        @method('POST')
+    <form action="/admin/associate/store" method="post">
+{{--        @method('POST')--}}
         @csrf
         <fieldset>
             <!-- Personal Details -->
@@ -15,12 +15,13 @@
                 <div class="card-body">
                     <h5 class="card-title">Personal Details</h5>
                     <div class="row col-12 px-5">
+                        <input type="int" hidden name="user_id" value="{{$user_id}}">
                         <div class="col p-1 row">
                             <div class="col-3">
                                 <label for="title" class="form-label py-1">Title</label>
                             </div>
                             <div class="col-9">
-                                <input type="text" name='title' class="form-control" id="title" placeholder="Title">
+                                <input required type="text" name='title' class="form-control" id="title" placeholder="Title">
                             </div>
                         </div>
                         <div class="col p-1 row">
@@ -28,7 +29,7 @@
                                 <label for="firstName" class="form-label py-1">First Name</label>
                             </div>
                             <div class="col-9">
-                                <input type="text" name='firstName' class="form-control" id="firstName" placeholder="First name">
+                                <input required type="text" name='firstName' class="form-control" id="firstName" placeholder="First name">
                             </div>
                         </div>
                         <div class="col p-1 row">
@@ -36,7 +37,7 @@
                                 <label for="lastName" class="form-label py-1">Last Name</label>
                             </div>
                             <div class="col-9">
-                                <input type="text" name='lastName' class="form-control" id="lastName" placeholder="Last Name">
+                                <input required type="text" name='lastName' class="form-control" id="lastName" placeholder="Last Name">
                             </div>
                         </div>
                     </div>
@@ -70,7 +71,7 @@
                                 <label for="address1" class="form-label py-1">Address 1</label>
                             </div>
                             <div class="col-9">
-                                <input type="text" name='address1' class="form-control" id="address1" placeholder="Address 1">
+                                <input required type="text" name='address1' class="form-control" id="address1" placeholder="Address 1">
                             </div>
                         </div>
                         <div class="col p-1 row">
@@ -96,7 +97,7 @@
                                 <label for="city" class="form-label py-1">City</label>
                             </div>
                             <div class="col-9">
-                                <input type="text" name='city' class="form-control" id="city" placeholder="City">
+                                <input required type="text" name='city' class="form-control" id="city" placeholder="City">
                             </div>
                         </div>
                         <div class="col p-1 row">
@@ -104,7 +105,7 @@
                                 <label for="county" class="form-label py-1">County</label>
                             </div>
                             <div class="col-9">
-                                <input type="text"name='county' class="form-control" id="county" placeholder="County">
+                                <input required type="text"name='county' class="form-control" id="county" placeholder="County">
                             </div>
                         </div>
                         <div class="col p-1 row">
@@ -112,7 +113,15 @@
                                 <label for="postcode" class="form-label py-1">Postcode</label>
                             </div>
                             <div class="col-9">
-                                <input type="text" name='postcode' class="form-control" id="postcode" placeholder="Postcode">
+                                <input required type="text" name='postcode' class="form-control" id="postcode" placeholder="Postcode">
+                            </div>
+                        </div>
+                        <div class="col p-1 row">
+                            <div class="col-3">
+                                <label for="country" class="form-label py-1">Country</label>
+                            </div>
+                            <div class="col-9">
+                                <input required type="text" name='country' class="form-control" id="country" placeholder="Country">
                             </div>
                         </div>
                     </div>
@@ -136,7 +145,7 @@
                                 <label for="phoneHome" class="form-label py-1">Phone Home</label>
                             </div>
                             <div class="col-9">
-                                <input type="text" name='phoneHome' class="form-control" id="phoneHome" placeholder="Phone Number (Home)>
+                                <input type="text" name='phoneHome' class="form-control" id="phoneHome" placeholder="Phone Number (Home)">
                             </div>
                         </div>
                         <div class="col p-1 row">
@@ -154,7 +163,7 @@
                                 <label for="email" class="form-label py-1">Email</label>
                             </div>
                             <div class="col-9">
-                                <input type="text" class="form-control" id="email" placeholder="Email">
+                                <input required type="text" name='email' class="form-control" id="email" placeholder="Email">
                             </div>
                         </div>
                         <div class="col p-1 row">
@@ -181,7 +190,7 @@
                                 <label for="emergencyContactName" class="form-label py-1">Name</label>
                             </div>
                             <div class="col-9">
-                                <input type="text" name='emergencyContactName' class="form-control" id="emergencyContactName" value="{{$associate->emergency_contact_name}}" placeholder="{{$associate->emergency_contact_name}}">
+                                <input required type="text" name='emergencyContactName' class="form-control" id="emergencyContactName" placeholder="Full Name">
                             </div>
                         </div>
                         <div class="col p-1 row">
@@ -189,7 +198,7 @@
                                 <label for="emergencyContactPhone" class="form-label py-1">Phone</label>
                             </div>
                             <div class="col-9">
-                                <input type="text" name='emergencyContactPhone' class="form-control" id="emergencyContactPhone" value="{{$associate->emergency_contact_phone}}" placeholder="{{$associate->emergency_contact_phone}}">
+                                <input required type="text" name='emergencyContactPhone' class="form-control" id="emergencyContactPhone" placeholder="Phone Number">
                             </div>
                         </div>
                         <div class="col p-1 row">
@@ -197,7 +206,7 @@
                                 <label for="emergencyContactEmail" class="form-label py-1">Email</label>
                             </div>
                             <div class="col-9">
-                                <input type="text" name='emergencyContactEmail' class="form-control" id="emergencyContactEmail" value="{{$associate->emergency_contact_email}}" placeholder="{{$associate->emergency_contact_email}}">
+                                <input required type="text" name='emergencyContactEmail' class="form-control" id="emergencyContactEmail" placeholder="Email">
                             </div>
                         </div>
                     </div>
