@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class AssociateData extends Model
 {
-    protected $table = 'associate_data';
+    protected $table = 'associate_information';
     use HasFactory;
 
     public static function associate($associate)

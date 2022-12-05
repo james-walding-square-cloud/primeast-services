@@ -40,6 +40,8 @@ class AssociateController extends Controller
             ->where('user_id', $user_id)
             ->first();
 
+        dump($associate);
+
         return view('associate/edit', [
             'associate' => $associate,
         ]);
