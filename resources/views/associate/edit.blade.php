@@ -3,7 +3,7 @@
 @section('content')
     <div class="py-3">
         <div class="row"></div>
-        <h1>{{$associate->first_name . ' ' . $associate->last_name}}</h1>
+        <h1 class="text-center">{{$associate->first_name . ' ' . $associate->last_name}}</h1>
         <hr>
     </div>
     <form action="/admin/associate/update/{{$associate->user_id}}" method="post">
@@ -337,19 +337,177 @@
                         </div>
                         <div class="col-6 p-1 row">
                             <div class="col-3">
-                                <label for="geographicalExperience" class="form-label py-1">Awards</label>
+                                <label for="industrialExperience" class="form-label py-1">Industrial Experience</label>
                             </div>
                             <div class="col-9">
-                                <input type="text" name='geographicalExperience' class="form-control" id="geographicalExperience" value="{{$associate->associateData->industry_experience}}" placeholder="{{$associate->associateData->industry_experience ?? 'Industry Experience (Industry 1, Industry 2)'}}">
+                                <input type="text" name='industrialExperience' class="form-control" id="industrialExperience" value="{{$associate->associateData->industry_experience}}" placeholder="{{$associate->associateData->industry_experience ?? 'Industry Experience (Industry 1, Industry 2)'}}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row col-12 px-5 ">
+                        <div class="col-6 p-1 row">
+                            <div class="col-3">
+                                <label for="sectors" class="form-label py-1">Sectors Worked In</label>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" name='sectors' class="form-control" id="sectors" value="{{$associate->associateData->sectors_worked_in}}" placeholder="{{$associate->associateData->sectors_worked_in ?? 'Sectors (Sector 1, Sector 2)'}}">
+                            </div>
+                        </div>
+                        <div class="col-6 p-1 row">
+                            <div class="col-3">
+                                <label for="areasOfExpertise" class="form-label py-1">Areas of Expertise</label>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" name='areasOfExpertise' class="form-control" id="areasOfExpertise" value="{{$associate->associateData->areas_of_expertise}}" placeholder="{{$associate->associateData->areas_of_expertise ?? 'Areas of Expertise (Expertise 1, Expertise 2)'}}">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
             <!-- workplace behaviors and preferences -->
+            <div class="card m-2 my-5 shadow-lg">
+                <div class="card-body">
+                    <h5 class="card-title">Behaviors and Preferences</h5>
+                    <div class="row col-12 px-5 ">
+                        <div class="col-6 p-1 row">
+                            <div class="col-3">
+                                <label for="feesPerDay" class="form-label py-1">Fees Per Day</label>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" name='feesPerDay' class="form-control" id="feesPerDay" value="{{$associate->associateData->fees_per_day}}" placeholder="{{$associate->associateData->fees_per_day ?? 'Fees Per Day'}}">
+                            </div>
+                        </div>
+                        <div class="col-6 p-1 row">
+                            <div class="col-3">
+                                <label for="endToEndDesign" class="form-label py-1">End to End Design</label>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" name='endToEndDesign' class="form-control" id="endToEndDesign" value="{{$associate->associateData->end_to_end_design}}" placeholder="{{$associate->associateData->end_to_end_design ?? 'End to End Design'}}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row col-12 px-5 ">
+                        <div class="col-6 p-1 row">
+                            <div class="col-3">
+                                <label for="workWithPreference" class="form-label py-1">Preferred Colleague Level</label>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" name='workWithPreference' class="form-control" id="workWithPreference" value="{{$associate->associateData->work_with_preference}}" placeholder="{{$associate->associateData->work_with_preference ?? 'Work With Preference (Middle Management etc)'}}">
+                            </div>
+                        </div>
+                        <div class="col-6 p-1 row">
+                            <div class="col-3">
+                                <label for="stylePreference" class="form-label py-1">Teaching Style Preference</label>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" name='stylePreference' class="form-control" id="stylePreference" value="{{$associate->associateData->style_preference}}" placeholder="{{$associate->associateData->style_preference ?? 'Teaching Style Preference'}}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- Coaching -->
+            <div class="card m-2 my-5 shadow-lg">
+                <div class="card-body">
+                    <h5 class="card-title">Coaching</h5>
+                    <div class="row col-12 px-5 ">
+                        <div class="col p-1 row">
+                            <div class="col-3">
+                                <label for="contentType" class="form-label py-1">Content Type</label>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" name='contentType' class="form-control" id="contentType" value="{{$associate->associateData->content_type}}" placeholder="{{$associate->associateData->content_type ?? 'Content Type'}}">
+                            </div>
+                        </div>
+                        <div class="col p-1 row">
+                            <div class="col-3">
+                                <label for="roomEnergy" class="form-label py-1">Room Energy</label>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" name='roomEnergy' class="form-control" id="roomEnergy" value="{{$associate->associateData->room_energy}}" placeholder="{{$associate->associateData->room_energy ?? 'Room Energy'}}">
+                            </div>
+                        </div>
+                        <div class="col p-1 row">
+                            <div class="col-3">
+                                <label for="coachingStyle" class="form-label py-1">Coaching Style</label>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" name='coachingStyle' class="form-control" id="coachingStyle" value="{{$associate->associateData->coaching_style}}" placeholder="{{$associate->associateData->coaching_style ?? 'Coaching Style'}}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row col-12 px-5 ">
+                        <div class="col-6 p-1 row">
+                            <div class="col-3">
+                                <label for="technologies" class="form-label py-1">Technologies</label>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" name='technologies' class="form-control" id="technologies" value="{{$associate->associateData->technologies}}" placeholder="{{$associate->associateData->technologies ?? 'Technologies'}}">
+                            </div>
+                        </div>
+                        <div class="col-6 p-1 row">
+                            <div class="col-3">
+                                <label for="learningDeliveryMethods" class="form-label py-1">Learning Delivery Methods</label>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" name='learningDeliveryMethods' class="form-control" id="learningDeliveryMethods" value="{{$associate->associateData->learning_delivery_methods}}" placeholder="{{$associate->associateData->learning_delivery_methods ?? 'Learning Delivery Methods'}}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- Other -->
+            <div class="card m-2 my-5 shadow-lg">
+                <div class="card-body">
+                    <h5 class="card-title">Other</h5>
+                    <div class="row col-12 px-5 ">
+                        <div class="col p-1 row">
+                            <div class="col-3">
+                                <label for="areasOfInterest" class="form-label py-1">Areas of Interest</label>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" name='areasOfInterest' class="form-control" id="areasOfInterest" value="{{$associate->associateData->areas_of_interest}}" placeholder="{{$associate->associateData->areas_of_interest ?? 'Areas of Interest'}}">
+                            </div>
+                        </div>
+                        <div class="col p-1 row">
+                            <div class="col-3">
+                                <label for="mobility" class="form-label py-1">Mobility</label>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" name='mobility' class="form-control" id="mobility" value="{{$associate->associateData->mobility}}" placeholder="{{$associate->associateData->mobility ?? 'Mobility'}}">
+                            </div>
+                        </div>
+                        <div class="col p-1 row">
+                            <div class="col-3">
+                                <label for="mobilityDetails" class="form-label py-1">Mobility Details</label>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" name='mobilityDetails' class="form-control" id="mobilityDetails" value="{{$associate->associateData->mobility_details}}" placeholder="{{$associate->associateData->mobility_details ?? 'Mobility Details'}}"></input>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row col-12 px-5 ">
+                        <div class="col-12 p-1 row">
+                            <div class="col-1">
+                                <label for="elevatorPitch" class="form-label py-1">Elevator Pitch</label>
+                            </div>
+                            <div class="col-11">
+                                <textarea name='elevatorPitch' rows="3" class="form-control" id="elevatorPitch" value="{{$associate->associateData->elevator_pitch}}" placeholder="{{$associate->associateData->elevator_pitch ?? 'Elevator Pitch'}}"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row col-12 px-5 ">
+                        <div class="col-12 p-1 row">
+                            <div class="col-1">
+                                <label for="interestingFacts" class="form-label py-1">Interesting Facts</label>
+                            </div>
+                            <div class="col-11">
+                                <textarea name='interestingFacts' rows="3" class="form-control textbox" id="interestingFacts" value="{{$associate->associateData->interesting_facts}}" placeholder="{{$associate->associateData->interesting_facts ?? 'Interesting Facts'}}"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="col-2 float-end px-5 py-1">
                 <button type="submit" class="btn btn-success w-100">Save</button>
             </div>

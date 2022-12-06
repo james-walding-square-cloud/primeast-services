@@ -3,7 +3,7 @@
 @section('content')
     <div class="py-3">
         <div class="row"></div>
-        <h1>Create Associate</h1>
+        <h1 class="text-center">Create Associate</h1>
         <hr>
     </div>
     <form action="/admin/associate/store" method="post">

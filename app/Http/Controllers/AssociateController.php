@@ -40,14 +40,12 @@ class AssociateController extends Controller
             ->where('user_id', $user_id)
             ->first();
 
-        dump($associate);
-
         return view('associate/edit', [
             'associate' => $associate,
         ]);
     }
     public function update(Request $request, $user_id) {
-        $associate = Associate::where('user_id', $user_id)->first();
+        $associate = Associate::with('associateData')->where('user_id', $user_id)->first();
 
         Associate::where('user_id', $user_id)
             ->update([
@@ -69,6 +67,38 @@ class AssociateController extends Controller
                 'emergency_contact_name' => $request->emergencyContactName ?? $associate->emrgency_contact_name,
                 'emergency_contact_phone' => $request->emergencyContactPhone ?? $associate->emrgency_contact_phone,
                 'emergency_contact_email' => $request->emergencyContactEmail ?? $associate->emrgency_contact_email,
+                'updated_at' => Carbon::now(),
+            ]);
+
+        AssociateData::where('user_id', $user_id)
+            ->update([
+                'areas_of_interest' => $request->areasOfInterest ?? $associate->associateData->areas_of_interest,
+                'primary_skillset' => $request->primarySkillset ?? $associate->associateData->primary_skillset,
+                'secondary_skillsets' => $request->secondarySkillset ?? $associate->associateData->secondary_skillsets,
+                'primary_language' => $request->primaryLanguage ?? $associate->associateData->primary_language,
+                'working_languages' => $request->workingLanguages ?? $associate->associateData->working_languages,
+                'sectors_worked_in' => $request->sectors ?? $associate->associateData->sectors_worked_in,
+                'geographical_experience' => $request->geographicalExperience ?? $associate->associateData->geographical_experience,
+                'mobility' => $request->mobility ?? $associate->associateData->mobility,
+                'mobility_details' => $request->mobiltyDetails ?? $associate->associateData->mobility_details,
+                'educational_qualifications' => $request->educationalQualifications ?? $associate->associateData->educational_qualifications,
+                'awards' => $request->awards ?? $associate->associateData->awards,
+                'fees_per_day' => $request->feesPerDay ?? $associate->associateData->fees_per_day,
+                'elevator_pitch' => $request->elevatorPitch ?? $associate->associateData->elevator_pitch,
+                'interesting_facts' => $request->interestingFacts ?? $associate->associateData->interesting_facts,
+                'areas_of_expertise' => $request->areasOfExpertise ?? $associate->associateData->areas_of_expertise,
+                'primary_accreditations' => $request->primaryAccreditations ?? $associate->associateData->primary_accreditations,
+                'secondary_accreditations' => $request->secondaryAccreditations ?? $associate->associateData->secondary_accreditations,
+                'end_to_end_design' => $request->endToEndDesign ?? $associate->associateData->end_to_end_design,
+                'work_with_preferences' => $request->workWithPreferences ?? $associate->associateData->work_with_preferences,
+                'style_preference' => $request->stylePreference ?? $associate->associateData->style_preference,
+                'content_type' => $request->contentType ?? $associate->associateData->content_type,
+                'industry_experience' => $request->industryExperience ?? $associate->associateData->industry_experience,
+                'room_energy' => $request->roomEnergy ?? $associate->associateData->room_energy,
+                'technologies' => $request->technologies ?? $associate->associateData->technologies,
+                'learning_delivery_methods' => $request->learningDeliveryMethods ?? $associate->associateData->learning_delivery_methods,
+                'primary_coaching_accreditations' => $request->primaryCoachingMethods ?? $associate->associateData->primary_coaching_accreditations,
+                'secondary_coaching_accreditations' => $request->secondaryCoachingMethods ?? $associate->associateData->secondary_coaching_accreditations,
                 'updated_at' => Carbon::now(),
             ]);
 
@@ -104,7 +134,7 @@ class AssociateController extends Controller
                 'address3' => $request->address3 ?? null,
                 'city' => $request->city ?? null,
                 'county' => $request->county ?? null,
-                'country' => $request->county ?? null,
+                'country' => $request->country ?? null,
                 'postcode' => $request->postcode ?? null,
                 'email' => $request->email ?? null,
                 'phone_office' => $request->phoneOffice ?? null,
