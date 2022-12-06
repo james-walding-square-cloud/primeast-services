@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class AssociateData extends Model
 {
     protected $table = 'associate_information';
+
+    protected $guarded = ['id'];
+
     use HasFactory;
 
     public static function associate($associate)

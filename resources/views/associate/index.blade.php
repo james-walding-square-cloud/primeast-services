@@ -18,7 +18,7 @@
                     <th class="col-1">Country</th>
                     <th class="col-1">City</th>
                     <th class="col-1">Primary Language</th>
-                    <th class="col-2">Job Role</th>
+                    <th class="col-2">Company</th>
                     <th class="col-3">Actions</th>
                 </tr>
             </thead>
@@ -30,8 +30,8 @@
                         <td>Active</td>
                         <td>{{$associate->country}}</td>
                         <td>{{$associate->city}}</td>
-                        <td>{{$associate->associateData ? $associate->associateData->Professional_working_languages : ''}}</td>
-                        <td>{{$associate->job_role}}</td>
+                        <td>{{$associate->associateData ? $associate->associateData->primary_language : ''}}</td>
+                        <td>{{$associate->company}}</td>
                         <td>
                             <div class="row">
                                 <div class="col-3">

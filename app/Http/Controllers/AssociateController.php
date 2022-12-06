@@ -16,7 +16,7 @@ class AssociateController extends Controller
             'user_id',
             'first_name',
             'last_name',
-            'job_role',
+            'company',
             'country',
             'city',
         )
@@ -117,7 +117,45 @@ class AssociateController extends Controller
                 'updated_at' => Carbon::now(),
             ]);
 
-        return redirect('/admin/associate/index');
+            AssociateData::create([
+                'user_id' => $request->user_id,
+                'areas_of_interest' => null,
+                'primary_skillset' => null,
+                'secondary_skillset' => null,
+                'primary_language' => null,
+                'working_languages' => null,
+                'sectors_worked_in' => null,
+                'geographical_experience' => null,
+                'mobility' => null,
+                'mobility_details' => null,
+                'educational_qualifications' => null,
+                'awards' => null,
+                'areas_of_interest' => null,
+                'fees_per_day' => null,
+                'elevator_pitch' => null,
+                'interesting_facts' => null,
+                'areas_of_expertise' => null,
+                'primary_accreditations' => null,
+                'secondary_accreditations' => null,
+                'end_to_end_design' => null,
+                'work_with_preferences' => null,
+                'style_preference' => null,
+                'content_type' => null,
+                'industry_experience' => null,
+                'room_energy' => null,
+                'technologies' => null,
+                'learning_delivery_methods' => null,
+                'primary_facilitating_accreditations' => null,
+                'secondary_facilitating_accreditations' => null,
+                'coaching_style' => null,
+                'primary_coaching_accreditations' => null,
+                'secondary_coaching_accreditations' => null,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ]);
+
+
+        return redirect('/admin/associate/edit/'.$request->user_id);
     }
 
     public function delete() {

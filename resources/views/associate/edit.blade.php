@@ -42,18 +42,26 @@
                     </div>
                     <div class="row col-12 px-5">
                         <div class="col p-1 row">
-                            <div class="col-2">
+                            <div class="col-3">
+                                <label for="company" class="form-label py-1">Company</label>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" name='company' class="form-control" id="company" value="{{$associate->company}}" placeholder="{{$associate->company}}">
+                            </div>
+                        </div>
+                        <div class="col p-1 row">
+                            <div class="col-3">
                                 <label for="jobRole" class="form-label py-1">Job Role</label>
                             </div>
-                            <div class="col-10">
+                            <div class="col-9">
                                 <input type="text" name='jobRole' class="form-control" id="jobRole" value="{{$associate->job_role}}" placeholder="{{$associate->job_role}}">
                             </div>
                         </div>
                         <div class="col p-1 row">
-                            <div class="col-2">
+                            <div class="col-3">
                                 <label for="department" class="form-label py-1">Department</label>
                             </div>
-                            <div class="col-10">
+                            <div class="col-9">
                                 <input type="text" name='department' class="form-control" id="department" value="{{$associate->department}}" placeholder="{{$associate->department}}">
                             </div>
                         </div>
@@ -209,10 +217,141 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-2 float-end px-5 py-1">
-                        <button type="submit" class="btn btn-success w-100">Save</button>
+                </div>
+            </div>
+            <!-- SkillSets -->
+            <div class="card m-2 my-5 shadow-lg">
+                <div class="card-body">
+                    <h5 class="card-title">Skill Sets</h5>
+                    <div class="row col-12 px-5 ">
+                        <div class="col-6 p-1 row">
+                            <div class="col-3">
+                                <label for="primarySkillset" class="form-label py-1">Primary Skill Set</label>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" name='primarySkillset' class="form-control" id="primarySkillset" value="{{str_contains($associate->associateData->primary_skillset, '[') ? str_replace(['[', ']', '"'], "", $associate->associateData->primary_skillset) : $associate->associateData->primary_skillset}}" placeholder="{{$associate->associateData->primary_skillset ?? 'Primary Skill set (Skill 1, Skill 2)'}}">
+                            </div>
+                        </div>
+                        <div class="col-6 p-1 row">
+                            <div class="col-3">
+                                <label for="secondarySkillset" class="form-label py-1">Secondary Skill Set</label>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" name='secondarySkillset' class="form-control" id="secondarySkillset" value="{{str_contains($associate->associateData->secondary_skillset, '[') ? str_replace(['[', ']', '"'], "", $associate->associateData->secondary_skillset) : $associate->associateData->secondary_skillset}}" placeholder="{{$associate->associateData->secondary_skillset ?? 'Secondary Skill set (Skill 1, Skill 2)'}}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row col-12 px-5 ">
+                        <div class="col-6 p-1 row">
+                            <div class="col-3">
+                                <label for="primaryLanguage" class="form-label py-1">Primary Language</label>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" name='primaryLanguage' class="form-control" id="primaryLanguage" value="{{$associate->associateData->primary_language}}" placeholder="{{$associate->associateData->primary_language ?? 'Primary Language'}}">
+                            </div>
+                        </div>
+                        <div class="col-6 p-1 row">
+                            <div class="col-3">
+                                <label for="secondaryLanguage" class="form-label py-1">Secondary Languages</label>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" name='secondaryLanguage' class="form-control" id="secondaryLanguage" value="{{str_contains($associate->associateData->working_languages, '[') ? str_replace(['[', ']', '"'], "", $associate->associateData->working_languages) : $associate->associateData->working_languages}}" placeholder="{{$associate->associateData->working_languages ?? 'Secondary Languages (Language 1, Language 2)'}}">
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
+            <!-- Qualifications -->
+            <div class="card m-2 my-5 shadow-lg">
+                <div class="card-body">
+                    <h5 class="card-title">Qualifications</h5>
+                    <div class="row col-12 px-5 ">
+                        <div class="col-6 p-1 row">
+                            <div class="col-3">
+                                <label for="educationalQualifications" class="form-label py-1">Educational Qualifications</label>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" name='educationalQualifications' class="form-control" id="educationalQualifications" value="{{$associate->associateData->educational_qualifications}}" placeholder="{{$associate->associateData->educational_qualifications ?? 'Educational Qualification'}}">
+                            </div>
+                        </div>
+                        <div class="col-6 p-1 row">
+                            <div class="col-3">
+                                <label for="awards" class="form-label py-1">Awards</label>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" name='awards' class="form-control" id="awards" value="{{$associate->associateData->awards}}" placeholder="{{$associate->associateData->awards ?? 'Awards (Award 1, Award 2)'}}">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row col-12 px-5 ">
+                        <div class="col-6 p-1 row">
+                            <div class="col-3">
+                                <label for="primaryCoachingAccreditations" class="form-label py-1">Primary Coaching Accreditations</label>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" name='primaryCoachingAccreditations' class="form-control" id="primaryCoachingAccreditations" value="{{$associate->associateData->primary_coaching_accreditations}}" placeholder="{{$associate->associateData->primary_coaching_accreditations ?? 'Primary Coaching Accreditations'}}">
+                            </div>
+                        </div>
+                        <div class="col-6 p-1 row">
+                            <div class="col-3">
+                                <label for="secondaryCoachingAccreditations" class="form-label py-1">Secondary Coaching Accreditations</label>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" name='secondaryCoachingAccreditations' class="form-control" id="secondaryCoachingAccreditations" value="{{$associate->associateData->secondary_coaching_accreditations}}" placeholder="{{$associate->associateData->secondary_coaching_accreditations ?? 'Secondary Coaching Accreditations'}}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row col-12 px-5 ">
+                        <div class="col-6 p-1 row">
+                            <div class="col-3">
+                                <label for="primaryFacilitatingAccreditations" class="form-label py-1">Primary Facilitating Accreditations</label>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" name='primaryFacilitatingAccreditations' class="form-control" id="primaryFacilitatingAccreditations" value="{{$associate->associateData->primary_facilitating_accreditations}}" placeholder="{{$associate->associateData->primary_facilitating_accreditations ?? 'Primary Facilitating Accreditations'}}">
+                            </div>
+                        </div>
+                        <div class="col-6 p-1 row">
+                            <div class="col-3">
+                                <label for="secondaryFacilitatingAccreditations" class="form-label py-1">Secondary Facilitating Accreditations</label>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" name='secondaryFacilitatingAccreditations' class="form-control" id="secondaryFacilitatingAccreditations" value="{{$associate->associateData->secondary_facilitating_accreditations}}" placeholder="{{$associate->associateData->secondary_facilitating_accreditations ?? 'Secondary Facilitating Accreditations'}}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Experience -->
+            <div class="card m-2 my-5 shadow-lg">
+                <div class="card-body">
+                    <h5 class="card-title">Experience</h5>
+                    <div class="row col-12 px-5 ">
+                        <div class="col-6 p-1 row">
+                            <div class="col-3">
+                                <label for="geographicalExperience" class="form-label py-1">Geographical Experience</label>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" name='geographicalExperience' class="form-control" id="geographicalExperience" value="{{$associate->associateData->geographical_experience}}" placeholder="{{$associate->associateData->geographical_experience ?? 'Geographical Experience (Location 1, Location 2)'}}">
+                            </div>
+                        </div>
+                        <div class="col-6 p-1 row">
+                            <div class="col-3">
+                                <label for="geographicalExperience" class="form-label py-1">Awards</label>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" name='geographicalExperience' class="form-control" id="geographicalExperience" value="{{$associate->associateData->industry_experience}}" placeholder="{{$associate->associateData->industry_experience ?? 'Industry Experience (Industry 1, Industry 2)'}}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- workplace behaviors and preferences -->
+            <!-- Coaching -->
+            <!-- Other -->
+            <div class="col-2 float-end px-5 py-1">
+                <button type="submit" class="btn btn-success w-100">Save</button>
             </div>
         </fieldset>
     </form>
