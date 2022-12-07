@@ -13,7 +13,8 @@
 
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-
+    <!-- livewire -->
+    @livewireStyles
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
@@ -92,5 +93,7 @@
             </div>
         </main>
     </div>
+    @livewireScripts
+    @stack('scripts')
 </body>
 </html>
