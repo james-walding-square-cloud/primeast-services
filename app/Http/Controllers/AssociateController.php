@@ -10,21 +10,7 @@ use App\Models\Associate;
 class AssociateController extends Controller
 {
     public function index() {
-        $associates = Associate::with('associateData')
-        ->select(
-            'title',
-            'user_id',
-            'first_name',
-            'last_name',
-            'company',
-            'country',
-            'city',
-        )
-        ->paginate(15);
-
-        return view('associate/index', [
-                'associates' => $associates,
-            ]);
+        return view('associate/index');
     }
     public function create() {
         $user_id = Associate::orderBy('user_id', 'desc')->pluck('user_id')->first();
@@ -67,6 +53,10 @@ class AssociateController extends Controller
                 'emergency_contact_name' => $request->emergencyContactName ?? $associate->emrgency_contact_name,
                 'emergency_contact_phone' => $request->emergencyContactPhone ?? $associate->emrgency_contact_phone,
                 'emergency_contact_email' => $request->emergencyContactEmail ?? $associate->emrgency_contact_email,
+                'known_languages' => $request->workingLanguages ?? $associate->associateData->working_languages,
+                'search_qualifications' => $request->educationalQualifications ?? $associate->associateData->educational_qualifications,
+                'search_primary_skillset' => $request->primarySkillset ?? $associate->associateData->primary_skillset,
+                'search_secondary_skillsets' => $request->secondarySkillset ?? $associate->associateData->secondary_skillsets,
                 'updated_at' => Carbon::now(),
             ]);
 
@@ -143,6 +133,7 @@ class AssociateController extends Controller
                 'emergency_contact_name' => $request->emergencyContactName ?? null,
                 'emergency_contact_phone' => $request->emergencyContactPhone ?? null,
                 'emergency_contact_email' => $request->emergencyContactEmail ?? null,
+                'languages' => $request->known_languages ?? null,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ]);

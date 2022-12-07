@@ -252,10 +252,10 @@
                         </div>
                         <div class="col-6 p-1 row">
                             <div class="col-3">
-                                <label for="secondaryLanguage" class="form-label py-1">Secondary Languages</label>
+                                <label for="workingLanguages" class="form-label py-1">All Languages</label>
                             </div>
                             <div class="col-9">
-                                <input type="text" name='secondaryLanguage' class="form-control" id="secondaryLanguage" value="{{str_contains($associate->associateData->working_languages, '[') ? str_replace(['[', ']', '"'], "", $associate->associateData->working_languages) : $associate->associateData->working_languages}}" placeholder="{{$associate->associateData->working_languages ?? 'Secondary Languages (Language 1, Language 2)'}}">
+                                <input type="text" name='workingLanguages' class="form-control" id="workingLanguages" value="{{str_contains($associate->associateData->working_languages, '[') ? str_replace(['[', ']', '"'], "", $associate->associateData->working_languages) : $associate->associateData->working_languages}}" placeholder="{{$associate->associateData->working_languages ?? 'All Languages including Primary (Language 1, Language 2)'}}">
                             </div>
                         </div>
                     </div>
