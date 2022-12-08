@@ -64,9 +64,11 @@
                                 </a>
                             </div>
                             <div class="col">
-                                <button class="btn btn-primary w-100">
-                                    profile
-                                </button>
+                                <a href="/admin/associate/profile/{{$associate->user_id}}">
+                                    <button class="btn btn-primary w-100">
+                                        profile
+                                    </button>
+                                </a>
                             </div>
                             <div class="col">
                                 <button class="btn btn-success w-100">

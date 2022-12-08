@@ -11,3 +11,11 @@
 .prm-blue-bg {
     background-color: #22869C
 }
+
+/* Profile */
+.profile-blue {
+    background-color: #041043;
+}
+#profile-image {
+    height: 300px;
+}

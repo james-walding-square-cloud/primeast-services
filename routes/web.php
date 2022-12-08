@@ -15,9 +15,9 @@ use App\Http\Controllers\AssociateController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('login');
+//});
 
 Auth::routes();
 
@@ -27,6 +27,7 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
     //Associate
     Route::get('/associate/index', [AssociateController::class, 'index']);
     Route::get('/associate/edit/{user_id}', [AssociateController::class, 'edit']);
+    Route::get('/associate/profile/{user_id}', [AssociateController::class, 'profile']);
     Route::put('/associate/update/{user_id}', [AssociateController::class, 'update']);
     Route::get('/associate/create', [AssociateController::class, 'create']);
     Route::post('/associate/store', [AssociateController::class, 'store']);
@@ -37,4 +38,5 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
 
 //User Access
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

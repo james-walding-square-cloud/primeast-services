@@ -12,6 +12,7 @@ class AssociateController extends Controller
     public function index() {
         return view('associate/index');
     }
+
     public function create() {
         $user_id = Associate::orderBy('user_id', 'desc')->pluck('user_id')->first();
         $user_id = $user_id+1;
@@ -21,6 +22,7 @@ class AssociateController extends Controller
         ]);
 
     }
+
     public function edit($user_id) {
         $associate = Associate::with('associateData')
             ->where('user_id', $user_id)
@@ -30,6 +32,17 @@ class AssociateController extends Controller
             'associate' => $associate,
         ]);
     }
+
+    public function profile($user_id) {
+        $associate = Associate::with('associateData')
+            ->where('user_id', $user_id)
+            ->first();
+
+        return view('associate/profile', [
+            'associate' => $associate,
+        ]);
+    }
+
     public function update(Request $request, $user_id) {
         $associate = Associate::with('associateData')->where('user_id', $user_id)->first();
 
